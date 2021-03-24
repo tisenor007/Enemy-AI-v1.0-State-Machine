@@ -57,15 +57,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(player.transform.position, enemy.transform.position);
-        //Debug.Log(distance);
-        //constantly sets a vector 3 to players current position
         playerPosition = player.transform.position;
         enemyPosition = enemy.transform.position;
-        //Debug.Log("player: " + playerPosition);
-        //Debug.Log("Enemy: " + enemyPosition);
-
-
+        float distance = Vector3.Distance(player.transform.position, enemy.transform.position);
+        
         if (distance <= 15)
         {
             //enemy constantly tries to get to that position (vector 3 being set)
