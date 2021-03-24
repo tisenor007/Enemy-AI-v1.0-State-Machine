@@ -5,8 +5,21 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+
+    enum State
+    {
+        patrolling, 
+        chasing, 
+        searching,
+        attacking,
+        retreating
+    }
+
+    static State state;
+
     public GameObject player;
     private Vector3 playerPosition;
+    private Vector3 LastPlayerPosition;
     private Vector3 enemyPosition;
     
 
@@ -35,6 +48,10 @@ public class Enemy : MonoBehaviour
         enemy.destination = points[patrolDestinationPoint].position;
         //cycles through points
         patrolDestinationPoint = (patrolDestinationPoint + 1) % points.Length;
+    }
+    static void TransitionToState(State newState)
+    {
+        state = newState;
     }
 
     // Update is called once per frame
